@@ -1,35 +1,59 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import StartScreen from './components/StartScreen';
+import PuzzleScreen from './components/PuzzleScreen';
+import ResultScreen from './components/ResultScreen';
+import WinScreen from './components/WinScreen';
+import DragDropPuzzle from './components/DragDropPuzzle';
+import puzzles from './data/puzzles';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [screen, setScreen] = useState('start');
+  const [currentPuzzle, setCurrentPuzzle] = useState(0);
+  const [isCorrect, setIsCorrect] = useState(null);
+
+  const handleStart = () => {
+    setCurrentPuzzle(0);
+    setScreen('puzzle');
+  };
+
+  const handleAnswer = (correct) => {
+    setIsCorrect(correct);
+    setScreen('result');
+  };
+
+  const handleNext = () => {
+    const nextPuzzle = currentPuzzle + 1;
+
+    if (nextPuzzle < puzzles.length) {
+      setCurrentPuzzle(nextPuzzle);
+      setScreen('puzzle');
+    } else if (nextPuzzle === puzzles.length) {
+      setScreen('drag'); // Show drag-and-drop puzzle
+    } else {
+      setScreen('win'); // Final win screen
+    }
+  };
+
+  const handleRestart = () => {
+    setCurrentPuzzle(0);
+    setScreen('start');
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="App">
+      {screen === 'start' && <StartScreen onStart={handleStart} />}
+      {screen === 'puzzle' && (
+        <PuzzleScreen puzzle={puzzles[currentPuzzle]} onAnswer={handleAnswer} />
+      )}
+      {screen === 'result' && (
+        <ResultScreen isCorrect={isCorrect} onNext={handleNext} />
+      )}
+      {screen === 'drag' && (
+        <DragDropPuzzle onFinish={handleAnswer} />
+      )}
+      {screen === 'win' && <WinScreen onRestart={handleRestart} />}
+    </div>
+  );
 }
 
-export default App
+export default App;
