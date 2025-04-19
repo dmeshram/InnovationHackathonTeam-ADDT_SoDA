@@ -15,57 +15,35 @@ const correctZones = {
 };
 
 const DragDropPuzzle = ({ onFinish }) => {
-  const [items, setItems] = useState(initialItems);
-  const [zones, setZones] = useState({
+  const [columns, setColumns] = useState({
+    items: initialItems,
     secure: [],
     insecure: [],
   });
 
   const onDragEnd = (result) => {
     const { source, destination } = result;
-
     if (!destination) return;
 
-    const getList = (id) =>
-      id === "items" ? items : zones[id] || [];
-
-    const sourceList = getList(source.droppableId);
-    const destinationList = getList(destination.droppableId);
+    // Clone the dragged item
+    const sourceList = Array.from(columns[source.droppableId]);
+    const destList = Array.from(columns[destination.droppableId]);
     const [movedItem] = sourceList.splice(source.index, 1);
+    destList.splice(destination.index, 0, movedItem);
 
-    if (source.droppableId === "items") {
-      setItems((prev) =>
-        prev.filter((item) => item.id !== movedItem.id)
-      );
-    } else {
-      setZones((prev) => ({
-        ...prev,
-        [source.droppableId]: prev[source.droppableId].filter(
-          (i) => i.id !== movedItem.id
-        ),
-      }));
-    }
-
-    if (destination.droppableId === "items") {
-      setItems((prev) => {
-        const updated = [...prev];
-        updated.splice(destination.index, 0, movedItem);
-        return updated;
-      });
-    } else {
-      setZones((prev) => ({
-        ...prev,
-        [destination.droppableId]: [...prev[destination.droppableId], movedItem],
-      }));
-    }
+    setColumns((prev) => ({
+      ...prev,
+      [source.droppableId]: sourceList,
+      [destination.droppableId]: destList,
+    }));
   };
 
   const checkAnswer = () => {
+    const secureIds = columns.secure.map((item) => item.id).sort();
+    const insecureIds = columns.insecure.map((item) => item.id).sort();
     const isCorrect =
-      JSON.stringify(zones.secure.map((i) => i.id).sort()) ===
-      JSON.stringify(correctZones.secure.sort()) &&
-      JSON.stringify(zones.insecure.map((i) => i.id).sort()) ===
-      JSON.stringify(correctZones.insecure.sort());
+      JSON.stringify(secureIds) === JSON.stringify(correctZones.secure.sort()) &&
+      JSON.stringify(insecureIds) === JSON.stringify(correctZones.insecure.sort());
 
     onFinish(isCorrect);
   };
@@ -75,47 +53,20 @@ const DragDropPuzzle = ({ onFinish }) => {
       <h2>🔐 Sort Secure vs Insecure Items</h2>
       <DragDropContext onDragEnd={onDragEnd}>
         <div className="drag-grid">
-          <Droppable droppableId="items">
-            {(provided) => (
-              <div
-                className="droppable source"
-                ref={provided.innerRef}
-                {...provided.droppableProps}
-              >
-                <h3>Unsorted Items</h3>
-                {items.map((item, index) => (
-                  <Draggable
-                    key={item.id}
-                    draggableId={item.id}
-                    index={index}
-                  >
-                    {(provided) => (
-                      <div
-                        className="drag-item"
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                      >
-                        {item.content}
-                      </div>
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-
-          {["secure", "insecure"].map((zone) => (
-            <Droppable key={zone} droppableId={zone}>
+          {["items", "secure", "insecure"].map((zone) => (
+            <Droppable droppableId={zone} key={zone}>
               {(provided) => (
                 <div
-                  className="droppable"
+                  className={`droppable ${zone === "items" ? "source" : ""}`}
                   ref={provided.innerRef}
                   {...provided.droppableProps}
                 >
-                  <h3>{zone.charAt(0).toUpperCase() + zone.slice(1)}</h3>
-                  {zones[zone].map((item, index) => (
+                  <h3>
+                    {zone === "items"
+                      ? "Unsorted Items"
+                      : zone.charAt(0).toUpperCase() + zone.slice(1)}
+                  </h3>
+                  {columns[zone].map((item, index) => (
                     <Draggable
                       key={item.id}
                       draggableId={item.id}
