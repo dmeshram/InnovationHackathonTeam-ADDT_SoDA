@@ -1,0 +1,18 @@
+.puzzle-screen {
+    padding: 2rem;
+    text-align: center;
+    color: #00ff99;
+}
+
+.puzzle-option {
+    border: 2px solid #00ff99;
+    padding: 1rem;
+    margin: 1rem auto;
+    width: 60%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.puzzle-option:hover {
+    background-color: #1a1a1a;
+}

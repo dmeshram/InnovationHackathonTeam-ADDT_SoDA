@@ -1,0 +1,22 @@
+.result-screen {
+    text-align: center;
+    color: #00ff99;
+    padding: 2rem;
+}
+
+.next-btn {
+    margin-top: 1.5rem;
+    background-color: #00ff99;
+    color: #0f0f0f;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.next-btn:hover {
+    background-color: #0f0f0f;
+    color: #00ff99;
+    border: 2px solid #00ff99;
+}
