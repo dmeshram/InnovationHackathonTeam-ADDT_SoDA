@@ -39,7 +39,7 @@ const DashboardPage = () => {
                     justifyContent: 'center',
                     animation: 'fadeIn 2s ease-in-out'
                 }}>
-                    {['Module A', 'Module B', 'Module C', 'Module D'].map((label, index) => (
+                    {['Programming', 'UI Design', 'Machine Learning', 'Cybersecurity'].map((label, index) => (
                         <button
                             key={index}
                             style={{
