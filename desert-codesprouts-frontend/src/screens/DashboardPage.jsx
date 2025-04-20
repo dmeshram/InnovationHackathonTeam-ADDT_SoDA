@@ -27,12 +27,54 @@ const DashboardPage = () => {
                     justifyContent: 'center',
                     alignItems: 'center',
                     flexDirection: 'column',
-                    minHeight: 'calc(100vh - 8rem)'
+                    minHeight: 'calc(100vh - 8rem)',
                 }}
             >
                 <h2 style={{ fontSize: '2rem', marginBottom: '2rem' }}>Modules</h2>
-            </main>
 
+                <div style={{
+                    display: 'flex',
+                    gap: '1.5rem',
+                    flexWrap: 'wrap',
+                    justifyContent: 'center',
+                    animation: 'fadeIn 2s ease-in-out'
+                }}>
+                    {['Module A', 'Module B', 'Module C', 'Module D'].map((label, index) => (
+                        <button
+                            key={index}
+                            style={{
+                                padding: '1rem 2rem',
+                                fontSize: '1rem',
+                                borderRadius: '8px',
+                                border: 'none',
+                                backgroundColor: '#646cff',
+                                color: '#fff',
+                                cursor: 'pointer',
+                                transition: 'transform 0.3s ease',
+                                animation: `slideInUp 0.5s ease ${index * 0.2}s forwards`,
+                                opacity: 0,
+                            }}
+                            onMouseOver={e => e.currentTarget.style.transform = 'scale(1.1)'}
+                            onMouseOut={e => e.currentTarget.style.transform = 'scale(1.0)'}
+                        >
+                            {label}
+                        </button>
+                    ))}
+                </div>
+
+                <style>{`
+                @keyframes slideInUp {
+                  from {
+                    transform: translateY(20px);
+                    opacity: 0;
+                  }
+                  to {
+                    transform: translateY(0);
+                    opacity: 1;
+                  }
+                }
+              `}</style>
+            </main>
         </div>
     );
 };
