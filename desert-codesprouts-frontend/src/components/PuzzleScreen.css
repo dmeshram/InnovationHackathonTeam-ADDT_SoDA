@@ -1,18 +1,23 @@
 .puzzle-screen {
     padding: 2rem;
     text-align: center;
-    color: #00ff99;
-}
-
-.puzzle-option {
-    border: 2px solid #00ff99;
+    color: #61dafb; /* Light blue */
+  }
+  
+  .puzzle-option {
+    border: 2px solid #61dafb;
+    color: #61dafb;
+    background-color: transparent;
     padding: 1rem;
     margin: 1rem auto;
     width: 60%;
     cursor: pointer;
-    transition: 0.3s;
-}
-
-.puzzle-option:hover {
-    background-color: #1a1a1a;
-}
+    transition: all 0.3s ease-in-out;
+    border-radius: 10px;
+  }
+  
+  .puzzle-option:hover {
+    background-color: #112240; /* Dark blue hover */
+    transform: scale(1.03);
+  }
+  

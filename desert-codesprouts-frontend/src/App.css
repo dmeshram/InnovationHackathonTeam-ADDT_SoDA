@@ -1,9 +1,10 @@
-/* GENERAL STYLES */
+/* BLUE THEME STYLES */
 body {
   margin: 0;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
-  background-color: #0d0d0d;
-  color: #00ff99;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0a192f;
+  color: #61dafb;
+  /* Soft cyan blue */
 }
 
 .App {
@@ -15,7 +16,9 @@ body {
 /* SCREEN WRAPPERS */
 .start-screen,
 .result-screen,
-.puzzle-screen {
+.puzzle-screen,
+.drag-puzzle,
+.win-screen {
   animation: fadeIn 0.6s ease-in;
   max-width: 800px;
   margin: 0 auto;
@@ -37,8 +40,8 @@ body {
 /* BUTTONS */
 .start-btn,
 .next-btn {
-  background-color: #00ff99;
-  color: #0f0f0f;
+  background-color: #61dafb;
+  color: #0a192f;
   border: none;
   padding: 1rem 2rem;
   font-size: 1.1rem;
@@ -51,14 +54,14 @@ body {
 .start-btn:hover,
 .next-btn:hover {
   transform: scale(1.05);
-  background-color: #0f0f0f;
-  color: #00ff99;
-  border: 2px solid #00ff99;
+  background-color: #0a192f;
+  color: #61dafb;
+  border: 2px solid #61dafb;
 }
 
 /* PUZZLE OPTIONS */
 .puzzle-option {
-  border: 2px solid #00ff99;
+  border: 2px solid #61dafb;
   padding: 1rem;
   margin: 1rem auto;
   width: 80%;
@@ -69,11 +72,11 @@ body {
 }
 
 .puzzle-option:hover {
-  background-color: #1f1f1f;
+  background-color: #112240;
   transform: scale(1.03);
 }
 
 .result-screen h1 {
   font-size: 2.5rem;
-  text-shadow: 0 0 10px #00ff99;
+  text-shadow: 0 0 10px #61dafb;
 }
