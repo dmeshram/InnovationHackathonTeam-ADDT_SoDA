@@ -5,6 +5,7 @@ import RegisterPage from "./screens/RegisterPage";
 import LoginPage from "./screens/LoginPage";
 import DashboardPage from "./screens/DashboardPage";
 import ForgotPasswordPage from "./screens/ForgotPasswordPage";
+import StartScreen from "./components/Cybersecurity/StartScreen";
 // import Dashboard from "./screens/Dashboard";
 import { auth } from "./firebase/firebase";
 import { onAuthStateChanged } from "firebase/auth";
@@ -32,6 +33,7 @@ function App() {
         <Route path="/login" element={<LoginPage onLogin={setUser} />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/cybersecurity" element={<StartScreen />} />
       </Routes>
     </Router>
   );
