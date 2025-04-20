@@ -1,6 +1,17 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const DashboardPage = () => {
+    const navigate = useNavigate();
+
+    const handleClick = (label) => {
+        if (label === 'Cybersecurity') {
+            navigate('/cybersecurity');
+        } else {
+            alert(`${label} module coming soon!`);
+        }
+    };
+
     return (
         <div>
             <header
@@ -56,6 +67,7 @@ const DashboardPage = () => {
                             }}
                             onMouseOver={e => e.currentTarget.style.transform = 'scale(1.1)'}
                             onMouseOut={e => e.currentTarget.style.transform = 'scale(1.0)'}
+                            onClick={() => handleClick(label)}
                         >
                             {label}
                         </button>
