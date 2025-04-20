@@ -1,15 +1,20 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+
 import { loginUser } from "../firebase/auth";
 
 const LoginPage = ({ onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
 
   const handleLogin = async () => {
     try {
       const result = await loginUser(email, password);
       onLogin(result.user);
       console.log("Login successful:", result.user);
+      navigate('/dashboard');
     } catch (err) {
       alert(err.message);
     }
