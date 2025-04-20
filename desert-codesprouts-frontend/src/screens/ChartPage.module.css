@@ -1,0 +1,28 @@
+.container {
+    min-height: 100vh;
+    background: url('/logo/background.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(14px);
+    border-radius: 16px;
+    padding: 2rem;
+    color: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: white;
+  }
+  

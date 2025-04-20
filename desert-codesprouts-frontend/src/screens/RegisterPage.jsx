@@ -10,7 +10,7 @@ const RegisterPage = () => {
 
   const handleRegister = async () => {
     try {
-      await registerUser(email, password);
+      await registerUser(email, password, firstName, lastName);
       alert("Account created!");
     } catch (err) {
       alert(err.message);

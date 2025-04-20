@@ -16,6 +16,7 @@ const LoginPage = ({ onLogin }) => {
       const result = await loginUser(email, password);
       onLogin(result.user);
       console.log("Login Success", result.user);
+      navigate('/dashboard');
     } catch (err) {
       alert(err.message);
     }

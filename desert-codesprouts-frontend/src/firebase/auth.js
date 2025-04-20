@@ -1,11 +1,19 @@
 // src/firebase/auth.js
-import { signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import { auth } from "./firebase";
 
 const provider = new GoogleAuthProvider();
 
-export const registerUser = async (email, password) => {
-  return await createUserWithEmailAndPassword(auth, email, password);
+export const registerUser = async (email, password, firstName, lastName) => {
+  const userCredential = await createUserWithEmailAndPassword(auth, email, password, firstName, lastName);
+  const user = userCredential.user;
+
+  // Save displayName as "First Last"
+  await updateProfile(user, {
+    displayName: `${firstName} ${lastName}`
+  });
+
+  return user;
 };
 
 export const loginUser = async (email, password) => {

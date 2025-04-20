@@ -1,0 +1,43 @@
+.container {
+    min-height: 100vh;
+    background: url('/logo/background.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(14px);
+    border-radius: 16px;
+    padding: 2rem;
+    color: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .calendar {
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    color: black;
+    padding: 1rem;
+  }
+  
+  .selected {
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    color: #fff;
+  }
+  
+  .highlight {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+  }
+  
