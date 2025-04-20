@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 
 import RegisterPage from "./screens/RegisterPage";
 import LoginPage from "./screens/LoginPage";
+import ForgotPasswordPage from "./screens/ForgotPasswordPage";
 // import Dashboard from "./screens/Dashboard";
 import { auth } from "./firebase/firebase";
 import { onAuthStateChanged } from "firebase/auth";
@@ -28,6 +29,7 @@ function App() {
       <Routes>
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage onLogin={setUser} />} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/" element={<Navigate to={user ? "/dashboard" : "/login"} />} />
       </Routes>
     </Router>

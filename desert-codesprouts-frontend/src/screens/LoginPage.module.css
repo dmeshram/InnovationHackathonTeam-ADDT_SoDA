@@ -1,0 +1,145 @@
+.container {
+    height: 100vh;
+    width: 100vw;
+    background-image: url('../logo/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2rem 5%;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .card {
+    background: linear-gradient(to bottom right, rgba(20, 20, 20, 0.6), rgba(10, 10, 10, 0.5));
+    backdrop-filter: blur(8px);
+    border-radius: 1.25rem;
+    padding: 2rem;
+    max-width: 450px;
+    width: 100%;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  }
+  
+  .header {
+    margin-bottom: 1.5rem;
+  }
+  
+  .header h1 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  .dot {
+    color: #63a4ff;
+  }
+  
+  .subtext {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    color: #ccc;
+  }
+  
+  .subtext a {
+    color: #63a4ff;
+    text-decoration: none;
+    margin-left: 4px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 0.65rem 0.9rem;
+    border-radius: 0.6rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 0.9rem;
+    margin-bottom: 0.9rem;
+    transition: border 0.2s ease;
+  }
+  
+  input:focus {
+    outline: none;
+    border-color: #63a4ff;
+  }
+  
+  input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .row {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.75rem;
+  }
+  
+  .primaryBtn {
+    padding: 0.6rem 1.2rem;
+    background-color: #63a4ff;
+    border: none;
+    border-radius: 0.6rem;
+    color: white;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .primaryBtn:hover {
+    background-color: #4b90f4;
+  }
+  
+  .grayBtn {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: white;
+    padding: 0.6rem 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.6rem;
+    cursor: pointer;
+  }
+  
+  .divider {
+    text-align: center;
+    color: #888;
+    margin: 1.5rem 0 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .googleBtn {
+    background-color: white;
+    color: #333;
+    border: none;
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .googleBtn:hover {
+    background-color: #f2f2f2;
+  }
+  
+  .googleBtn img {
+    width: 20px;
+    height: 20px;
+  }
+  
