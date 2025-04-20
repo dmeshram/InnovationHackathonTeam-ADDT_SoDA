@@ -1,3 +1,12 @@
+import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+
+import RegisterPage from "./screens/RegisterPage";
+import LoginPage from "./screens/LoginPage";
+import ForgotPasswordPage from "./screens/ForgotPasswordPage";
+// import Dashboard from "./screens/Dashboard";
+import { auth } from "./firebase/firebase";
+import { onAuthStateChanged } from "firebase/auth";
 import { useState } from 'react';
 import StartScreen from './components/StartScreen';
 import PuzzleScreen from './components/PuzzleScreen';
@@ -40,19 +49,14 @@ function App() {
   };
 
   return (
-    <div className="App">
-      {screen === 'start' && <StartScreen onStart={handleStart} />}
-      {screen === 'puzzle' && (
-        <PuzzleScreen puzzle={puzzles[currentPuzzle]} onAnswer={handleAnswer} />
-      )}
-      {screen === 'result' && (
-        <ResultScreen isCorrect={isCorrect} onNext={handleNext} />
-      )}
-      {screen === 'drag' && (
-        <DragDropPuzzle onFinish={handleAnswer} />
-      )}
-      {screen === 'win' && <WinScreen onRestart={handleRestart} />}
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginPage onLogin={setUser} />} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="/" element={<Navigate to={user ? "/dashboard" : "/login"} />} />
+      </Routes>
+    </Router>
   );
 }
 
