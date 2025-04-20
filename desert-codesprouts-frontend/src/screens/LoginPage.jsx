@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 
 import { loginUser, signInWithGoogle } from "../firebase/auth";
 import styles from "./LoginPage.module.css";
-import { useNavigate } from "react-router-dom";
 import googleIcon from "../logo/google.svg";
 
 const LoginPage = ({ onLogin }) => {
